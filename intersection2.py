@@ -1,6 +1,8 @@
 import cv2
 import numpy as np
 import matplotlib.pyplot as plt
+import pylab
+
 
 def cleanlines(lines):
     # 清除重复的线条
@@ -88,7 +90,7 @@ def IntersectionPoints(lines):
 
 
 
-img = cv2.imread("picture/water4.jpg")
+img = cv2.imread("water4.jpg")
 width = 400
 high = int(img.shape[0]*width/img.shape[1])
 image = cv2.resize(img, (width, high))
@@ -122,7 +124,6 @@ cv2.imshow("iPengzhang",iPengzhang)
 '''# 背景图和二分图相减-->得到文字
 jian = np.abs(iPengzhang - dst2)
 #cv2.imshow("jian", jian)
-
 kernel3 = cv2.getStructuringElement(cv2.MORPH_RECT, (3, 6))  # 膨胀
 iWenzi = cv2.morphologyEx(jian, cv2.MORPH_DILATE, kernel3)  # 对文字进行膨胀运算
 #cv2.imshow('wenzi', iWenzi)'''
